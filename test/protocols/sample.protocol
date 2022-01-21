@@ -1,0 +1,5 @@
+name: Example Protocol
+comment: Test the test framework
+args:
+--
+Hello World!
