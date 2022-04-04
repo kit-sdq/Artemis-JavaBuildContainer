@@ -4,16 +4,18 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>edu.kit.informatik.artemis</groupId>
 	<artifactId>build-sample</artifactId>
-	<version>1.0</version>
 	<name>Build Example</name>
 	<description>Just some Build Example to cache all build dependencies.</description>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<maven.compiler.source>11</maven.compiler.source>
-		<maven.compiler.target>11</maven.compiler.target>
 		<scaConfigDirectory>${project.basedir}/staticCodeAnalysisConfig</scaConfigDirectory>
 		<analyzeTests>false</analyzeTests>
 	</properties>
+	<parent>
+		<groupId>edu.kit.kastel.sdq.artemis</groupId>
+		<artifactId>test-framework-parent</artifactId>
+		<version>0.18-SNAPSHOT</version>
+	</parent>
 	<repositories>
 		<repository>
 			<id>gitlab-maven</id>
@@ -24,12 +26,10 @@
 		<dependency>
 			<groupId>edu.kit.kastel.sdq.artemis</groupId>
 			<artifactId>test-framework</artifactId>
-			<version>0.0.16-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>edu.kit.kastel.sdq.artemis</groupId>
 			<artifactId>test-framework-checkstyle</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 	<build>
@@ -43,17 +43,8 @@
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.8.1</version>
-				<configuration>
-					<source>11</source>
-					<target>11</target>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
-				<version>3.0.0-M5</version>
+				<version>${maven-surefire-plugin-version}</version>
 				<configuration>
 					<argLine>-Dfile.encoding=UTF-8</argLine>
 					<systemProperties>
@@ -67,7 +58,7 @@
 			<plugin>
 				<groupId>com.github.spotbugs</groupId>
 				<artifactId>spotbugs-maven-plugin</artifactId>
-				<version>4.5.0.0</version>
+				<version>${spotbugs-maven-plugin-version}</version>
 				<configuration>
 					<!-- Do not analyze the files in the test directory -->
 					<includeTests>${analyzeTests}</includeTests>
@@ -87,12 +78,12 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-checkstyle-plugin</artifactId>
-				<version>3.1.1</version>
+				<version>${maven-checkstyle-plugin-version}</version>
 				<dependencies>
 					<dependency>
 						<groupId>com.puppycrawl.tools</groupId>
 						<artifactId>checkstyle</artifactId>
-						<version>8.42</version>
+						<version>${checkstyle-version}</version>
 					</dependency>
 				</dependencies>
 				<configuration>
@@ -109,17 +100,17 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-pmd-plugin</artifactId>
-				<version>3.14.0</version>
+				<version>${maven-pmd-plugin-version}</version>
 				<dependencies>
 					<dependency>
 						<groupId>net.sourceforge.pmd</groupId>
 						<artifactId>pmd-core</artifactId>
-						<version>6.29.0</version>
+						<version>${pmd-version}</version>
 					</dependency>
 					<dependency>
 						<groupId>net.sourceforge.pmd</groupId>
 						<artifactId>pmd-java</artifactId>
-						<version>6.29.0</version>
+						<version>${pmd-version}</version>
 					</dependency>
 				</dependencies>
 				<configuration>
