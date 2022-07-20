@@ -1,4 +1,5 @@
-FROM maven:3-eclipse-temurin-17
+# Explicitly use the image that is based on Ubuntu 20.04 Focal, as the newer Ubuntu release includes an updated glibc that does not work with older Docker hosts.
+FROM maven:3-eclipse-temurin-17-focal
 
 MAINTAINER Dominik Fuchss <dominik.fuchss@kit.edu>
 
