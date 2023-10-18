@@ -1,4 +1,4 @@
-FROM maven:3-eclipse-temurin-17
+FROM maven:3-eclipse-temurin-21
 
 MAINTAINER Dominik Fuchss <dominik.fuchss@kit.edu>
 
