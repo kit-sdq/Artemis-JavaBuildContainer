@@ -18,6 +18,6 @@ RUN echo "$LANG -- $LANGUAGE -- $LC_ALL" \
     
 
 ADD . /opt/java-template
-RUN cd /opt/java-template && pwd && ls -la && mvn clean install test && cd / && rm -rf /opt/java-template
+RUN cd /opt/java-template && pwd && ls -la && mvn clean install test && cd / && rm -rf /opt/java-template && chmod -R 666 /repo
 
 CMD ["mvn"]
