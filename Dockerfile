@@ -6,6 +6,7 @@ RUN apt-get update && apt-get install -y gnupg && rm -rf /var/lib/apt/lists/*
 
 ENV M2_HOME="/usr/share/maven"
 ENV MAVEN_OPTS="-Dmaven.repo.local=/repo"
+ENV RUN_IN_ARTEMIS="true" # A flag that indicates a run in artemis
 
 RUN echo "$LANG -- $LANGUAGE -- $LC_ALL" \
     && curl --version \
