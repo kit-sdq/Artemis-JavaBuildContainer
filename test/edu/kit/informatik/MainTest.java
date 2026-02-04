@@ -21,7 +21,7 @@ public class MainTest {
 				.addWhitelist(Matchers.matchesRegex("java\\.util\\.[A-Z].*")).addWhitelist(Matchers.matchesRegex("java\\.util\\.regex\\.[A-Z].*"))
 				.addWhitelist(Matchers.matchesRegex("java\\.util\\.function\\.[A-Z].*")).addWhitelist(Matchers.matchesRegex("java\\.util\\.stream\\.[A-Z].*"))
 				.addWhitelist("java.util.Objects") // Needed for compiler handling inline constants
-				.addBlacklist("")).addStage(new ProtocolTestGenerator("test/protocols"));
+				.addBlacklist("")).addStage(new ProtocolTestGenerator("test/protocols", false));
 
 		return tests.get();
 	}
